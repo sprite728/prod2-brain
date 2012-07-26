@@ -15,19 +15,6 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
 
-	<div>
-		<%= link_to "Generate Token", token_authentications_path(:user_id => current_user.id), :method => :post, :confirm => "Are you sure?"%>
-		<%= link_to "Delete Token", token_authentication_path(current_user), :method => :delete, :confirm => "Are you sure?"%>
-		<% if resource.authentication_token %>
-			<p>Authentication Token:<br/>
-				= resource.authentication_token
-			</p>
-			<p>
-				You can use this url to login<br/>
-				= link_to "http://localhost:3000#{root_path(:auth_token => resource.authentication_token)}", root_path(:auth_token => resource.authentication_token)
-			</p>
-		<% end %>
-	</div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
