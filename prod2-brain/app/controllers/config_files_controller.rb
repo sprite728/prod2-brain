@@ -1,5 +1,5 @@
 class ConfigFilesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index] # Only alow show and index without authentication
+  before_filter :authenticate_user!
   # GET /config_files
   # GET /config_files.json
   def index
