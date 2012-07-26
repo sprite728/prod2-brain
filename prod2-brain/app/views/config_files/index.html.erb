@@ -1,0 +1,21 @@
+<h1>Listing config_files</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @config_files.each do |config_file| %>
+  <tr>
+    <td><%= link_to 'Show', config_file %></td>
+    <td><%= link_to 'Edit', edit_config_file_path(config_file) %></td>
+    <td><%= link_to 'Destroy', config_file, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Config file', new_config_file_path %>

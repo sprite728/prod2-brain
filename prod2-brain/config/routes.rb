@@ -1,4 +1,16 @@
 Prod2Brain::Application.routes.draw do
+
+  # Redefine the Devise sessions routes to point to the overridden Sessions controller
+  devise_for :users, :controllers => { :sessions => "sessions" }
+  
+  devise_scope :user do
+    resources :sessions, :only => [:create, :destroy]
+  end
+
+  resources :config_files
+  resources :token_authentications, :only => [:create, :destroy]  
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +60,7 @@ Prod2Brain::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'ConfigFiles#index'
 
   # See how all your routes lay out with "rake routes"
 
