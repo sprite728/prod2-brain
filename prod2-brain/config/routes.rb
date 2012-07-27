@@ -1,7 +1,10 @@
 Prod2Brain::Application.routes.draw do
 
   # Redefine the Devise sessions routes to point to the overridden Sessions controller
-  devise_for :users
+  devise_for :users, :controllers => { :sessions => "sessions" }
+  devise_scope :user do
+    resources :sessions, :only => [:create, :destroy]
+  end
 
   resources :config_files
   resources :token_authentications, :only => [:create, :destroy]  
